@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Brandon Loaiza Rodriguez — Engineering Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700&family=Inter:wght@400;500&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f7f6f3; --card:#ffffff; --ink:#141414; --muted:#6b6b6b; --line:#e4e2dd;
+    --accent:#e8501c; --cad:#eceef0;
+    --head:'Inter Tight',system-ui,sans-serif; --body:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  img,video{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
+  .label{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+  h1,h2,h3{font-family:var(--head);letter-spacing:-.02em;line-height:1.1}
+
+  header.top{padding:26px 0}
+  header.top .wrap{display:flex;justify-content:space-between;align-items:center}
+  .name{font-family:var(--head);font-weight:600;font-size:17px;text-decoration:none}
+  .links{display:flex;gap:10px}
+  .btn{font-size:14px;text-decoration:none;padding:8px 14px;border:1px solid var(--line);border-radius:99px;background:var(--card);transition:border-color .15s}
+  .btn:hover{border-color:var(--ink)}
+  .btn.dark{background:var(--ink);color:#fff;border-color:var(--ink)}
+
+  .view{display:none}
+  .view.on{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  .intro{padding:72px 0 64px}
+  .intro h1{font-size:clamp(40px,6.4vw,72px);font-weight:600;max-width:12em}
+  .intro h1 em{font-style:normal;color:var(--accent)}
+  .intro p{margin-top:22px;font-size:19px;color:var(--muted);max-width:34em}
+
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;padding-bottom:88px}
+  .tile{display:block;text-decoration:none;cursor:pointer}
+  .tile.feature{grid-column:1/-1}
+  .cover{position:relative;border-radius:10px;overflow:hidden;background:var(--cad);aspect-ratio:16/9}
+  .tile.feature .cover{aspect-ratio:2/1}
+  .cover img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+  .tile:hover .cover img{transform:scale(1.035)}
+  .cover .go{position:absolute;right:16px;bottom:16px;width:42px;height:42px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;font-size:18px;opacity:0;transform:translateY(6px);transition:.2s;box-shadow:0 2px 10px rgba(0,0,0,.12)}
+  .tile:hover .go{opacity:1;transform:none}
+  .cover.type{background:#151719;color:#fff;display:flex;flex-direction:column;justify-content:space-between;padding:26px}
+  .cover.type .big{font-family:var(--head);font-size:52px;font-weight:600;letter-spacing:-.03em;line-height:1}
+  .cover.type .label{color:#9aa0a6}
+  .meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 2px 0}
+  .meta h3{font-size:20px;font-weight:600}
+  .meta .label{white-space:nowrap}
+  .tile p.sub{color:var(--muted);font-size:15px;padding:2px 2px 0}
+
+  .block{border-top:1px solid var(--line);padding:64px 0}
+  .block h2{font-size:28px;font-weight:600;margin-bottom:28px}
+  .exp{display:grid;grid-template-columns:150px 1fr;gap:6px 28px}
+  .exp .when{font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:3px}
+  .exp .what{padding-bottom:22px}
+  .exp .what b{font-weight:500}
+  .exp .what span{color:var(--muted)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chips span{font-size:14px;padding:6px 12px;border-radius:99px;background:var(--card);border:1px solid var(--line)}
+  .contact{display:flex;justify-content:space-between;align-items:end;gap:28px;flex-wrap:wrap}
+  .contact h2{font-size:clamp(30px,4.4vw,46px);margin:0}
+  .mail{font-size:20px;font-weight:500;text-decoration:none;border-bottom:2px solid var(--accent)}
+  footer{padding:28px 0 44px;font-size:13px;color:var(--muted)}
+
+  .back{display:inline-flex;gap:8px;align-items:center;text-decoration:none;font-size:15px;color:var(--muted);margin:24px 0 36px}
+  .back:hover{color:var(--ink)}
+  .p-head h1{font-size:clamp(38px,5.6vw,64px);font-weight:600}
+  .p-head p{font-size:19px;color:var(--muted);max-width:36em;margin-top:16px}
+  .p-hero{margin:40px 0 0;border-radius:10px;overflow:hidden;background:var(--cad)}
+  .p-hero img{width:100%}
+  .kv{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:40px 0}
+  .kv div div{padding:0}
+  .kv>div{padding:20px 16px 20px 0}
+  .kv .v{font-family:var(--head);font-size:26px;font-weight:600;letter-spacing:-.02em}
+  .kv .k{font-size:14px;color:var(--muted)}
+  .prose{max-width:680px}
+  .prose h2{font-size:24px;font-weight:600;margin:48px 0 12px}
+  .prose p+p{margin-top:14px}
+  .prose ul{margin:10px 0 0 20px}
+  .prose li{margin:8px 0}
+  figure{margin:40px 0}
+  figure .frame{border-radius:10px;overflow:hidden;background:var(--cad)}
+  figure.narrow{max-width:720px}
+  figure.narrow .frame img{width:100%}
+  figcaption{font-size:14px;color:var(--muted);margin-top:10px}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .two .frame{height:460px;background:#000}
+  .two .frame img,.two .frame video{width:100%;height:100%;object-fit:cover}
+  .three{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:22px}
+  .three .frame{height:420px;background:#000}
+  .three .frame img,.three .frame video{width:100%;height:100%;object-fit:cover}
+  .method{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:26px 28px;margin-top:36px;max-width:760px}
+  .method dl div{display:grid;grid-template-columns:140px 1fr;gap:16px;padding:9px 0;border-top:1px solid var(--line);font-size:15.5px}
+  .method dt{color:var(--muted)}
+  .frame.white{background:#f6f6f6}
+  .cfd-row{display:grid;grid-template-columns:260px 1fr;gap:22px;align-items:start}
+  .cfd-row .tall img{width:100%}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:18px}
+  .steps div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:20px}
+  .steps .label{display:block;margin-bottom:10px;color:var(--accent)}
+  .steps p{font-size:15px}
+  .about{display:grid;grid-template-columns:360px 1fr;gap:48px;align-items:center}
+  .about img{border-radius:10px}
+  .about p+p{margin-top:14px}
+  .chart{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:28px}
+  .note{border-left:3px solid var(--accent);padding:4px 0 4px 18px}
+  .next{border-top:1px solid var(--line);margin-top:72px;padding:36px 0 80px;display:flex;justify-content:space-between;gap:20px}
+  .next a{text-decoration:none}
+  .next a:hover h3{color:var(--accent)}
+  .next h3{font-size:22px;font-weight:600;margin-top:4px}
+
+  @media (max-width:820px){
+    .links .btn.hide-sm{display:none}
+    .intro{padding:40px 0 44px}
+    .grid{grid-template-columns:1fr}
+    .tile.feature .cover{aspect-ratio:4/3}
+    .exp{grid-template-columns:1fr;gap:0}
+    .exp .what{padding-bottom:16px}
+    .kv{grid-template-columns:1fr 1fr}
+    .two,.three,.cfd-row,.about{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    .method dl div{grid-template-columns:1fr;gap:2px}
+    .three .frame{height:380px}
+    .two .frame{height:380px}
+  }
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <a class="name" href="#">Brandon Loaiza Rodriguez</a>
+  <div class="links">
+    <a class="btn hide-sm" href="https://www.linkedin.com/in/brandonloaiza" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a class="btn hide-sm" href="img/resume.pdf" target="_blank" rel="noopener">Resume ↗</a>
+    <a class="btn dark" href="#contact">Contact</a>
+  </div>
+</div></header>
+
+<!-- HOME -->
+<main class="view" id="v-home"><div class="wrap">
+  <section class="intro">
+    <div class="label" style="margin-bottom:18px">Mechanical Engineering · Olin College · Class of 2030</div>
+    <h1>I design race car aero, and I've spent <em>five years</em> under real cars.</h1>
+    <p>I'm a mechanical engineering student at Olin and I design the undertray and diffuser on our Formula SAE car. I'm looking for internships in motorsports and aerospace.</p>
+  </section>
+
+  <section class="block" style="border-top:0;padding-top:0">
+    <div class="about">
+      <figure style="margin:0"><img src="img/shpe.jpg" alt="Brandon at SHPE holding the Mexican flag"><figcaption>At SHPE</figcaption></figure>
+      <div>
+        <div class="label" style="margin-bottom:12px">About</div>
+        <h2 style="margin-bottom:18px">From the shop floor to CFD.</h2>
+        <p>I grew up working in my family's shop, Loaiza Auto Repair, where I worked on more than 200 cars before I ever opened CAD software. Now I'm studying mechanical engineering at Olin, where I design aerodynamics for our Formula SAE team.</p>
+        <p>I want a career in R&amp;D. Long term, I want to work on hydrogen-powered internal combustion engines.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="label" style="margin-bottom:18px">Projects</div>
+  <section class="grid">
+    <a class="tile" href="#diffuser">
+      <div class="cover"><img src="img/cover-car.jpg" alt="Formula SAE car render with rear diffuser"><span class="go">→</span></div>
+      <div class="meta"><h3>FSAE rear diffuser &amp; undertray</h3><span class="label">CAD · CFD</span></div>
+      <p class="sub">Took downforce from 6 N to 70 N over 24+ CFD iterations. I'm the sole designer.</p>
+    </a>
+    <a class="tile" href="#lexus">
+      <div class="cover"><img src="img/lexus.jpg" alt="Lexus IS on coilovers"><span class="go">→</span></div>
+      <div class="meta"><h3>Lexus IS350 rebuild</h3><span class="label">Engine · Drivetrain</span></div>
+      <p class="sub">Engine, transmission and rear differential replacement, plus a coilover conversion.</p>
+    </a>
+  </section>
+
+  <section class="block">
+    <h2>Experience</h2>
+    <div class="exp">
+      <div class="when">Aug 2026 – now</div><div class="what"><b>Aerodynamics team member</b> <span>· Olin Electric Motorsports (FSAE)</span></div>
+      <div class="when">2026 – now</div><div class="what"><b>Chassis co-designer</b> <span>· Olin Aero project team (VTOL)</span></div>
+      <div class="when">2020 – 2025</div><div class="what"><b>Apprentice automotive mechanic</b> <span>· Loaiza Auto Repair</span></div>
+      <div class="when">2023 – 2026</div><div class="what"><b>Leader</b> <span>· Leaders In Training (LIT), non-profit</span></div>
+      <div class="when">Jan – Jul 2026</div><div class="what"><b>College math tutor</b> <span>· CSN Tutoring Center, about 20 students through Calculus II</span></div>
+      <div class="when">Education</div><div class="what"><b>B.S. Mechanical Engineering</b> <span>· Olin College of Engineering, May 2030 · GPA 4.0</span><br><b>Associate of Science</b> <span>· College of Southern Nevada, June 2026 · GPA 3.65</span></div>
+    </div>
+    <div class="chips" style="margin-top:18px">
+      <span>SolidWorks surfacing</span><span>Onshape</span><span>SimScale CFD</span><span>STAR-CCM+</span><span>Ansys</span><span>XFLR5</span><span>MATLAB</span><span>Python</span><span>TIG welding</span><span>Composites</span><span>Mill · 3D printing</span><span>OBD-II diagnostics</span><span>English · Spanish</span>
+    </div>
+  </section>
+
+  <section class="block" id="contact-block">
+    <div class="contact">
+      <div>
+        <div class="label" style="margin-bottom:12px">Open to internships</div>
+        <h2>Let's talk.</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start">
+        <a class="mail" href="mailto:Loaiza.r007@gmail.com">Loaiza.r007@gmail.com</a>
+        <div style="display:flex;gap:10px"><a class="btn" href="https://www.linkedin.com/in/brandonloaiza" target="_blank" rel="noopener">LinkedIn ↗</a><a class="btn" href="img/resume.pdf" target="_blank" rel="noopener">Resume ↗</a></div>
+      </div>
+    </div>
+  </section>
+</div></main>
+
+<!-- DIFFUSER -->
+<main class="view" id="v-diffuser"><div class="wrap">
+  <a class="back" href="#">← All projects</a>
+  <div class="p-head">
+    <div class="label" style="margin-bottom:14px">Olin Electric Motorsports · Formula SAE</div>
+    <h1>Rear diffuser &amp; undertray</h1>
+    <p>I designed this from a blank page: the concept, the SolidWorks surface model and every CFD run. The goal is 40 N of downforce at 12 m/s within the car's tight packaging limits.</p>
+  </div>
+  <div class="p-hero"><img src="img/cover-car.jpg" alt="Formula SAE car render with rear diffuser"></div>
+
+  <div class="kv">
+    <div><div class="v">70 N</div><div class="k">Downforce at 12 m/s</div></div>
+    <div><div class="v">14 N</div><div class="k">Drag (L/D = 5.0)</div></div>
+    <div><div class="v">24+</div><div class="k">CFD iterations</div></div>
+    <div><div class="v">New</div><div class="k">Sub-team; I'm writing its aero docs</div></div>
+  </div>
+
+  <div class="prose">
+    <h2>The problem</h2>
+    <p>The diffuser has to fit inside the ground clearance set by the suspension team and the space set by the aero team. It also can't dump air into the side tunnels.</p>
+  </div>
+
+  <div class="method">
+    <div class="label" style="margin-bottom:16px">Simulation setup · SimScale</div>
+    <dl>
+      <div><dt>Inlet</dt><dd>12 m/s from the front wall</dd></div>
+      <div><dt>Ground</dt><dd>Moving wall at 12 m/s</dd></div>
+      <div><dt>Ride height</dt><dd>1.5 in, close to the clearance with the suspension compressed</dd></div>
+      <div><dt>Geometry</dt><dd>Diffuser and undertray on their own, without the car body</dd></div>
+      <div><dt>Solver</dt><dd>Steady-state incompressible, k-ω turbulence model</dd></div>
+      <div><dt>Mesh</dt><dd>About 7.1 million cells</dd></div>
+      <div><dt>Convergence</dt><dd>2,000 iterations; forces flat from about iteration 700; velocity residuals ≈ 5×10⁻⁵</dd></div>
+    </dl>
+  </div>
+
+  <figure>
+    <div class="frame white"><img src="img/force-plot.jpg" alt="SimScale force history for CFD 24" style="width:100%"></div>
+    <figcaption>Force history for the latest run: total downforce (red) settles by about iteration 700 and holds at 70.1 N through 2,000. Total drag (orange) holds near 14 N.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>Progress</h2>
+    <p>I used pressure distributions and velocity fields to decide each change. My first design made 6 N. After 12 iterations it made 31 N. The current design makes 70 N of downforce for 14 N of drag, well past the 40 N target.</p>
+  </div>
+
+  <figure class="chart">
+    <div class="label" style="margin-bottom:16px">Downforce at 12 m/s (CFD)</div>
+    <svg viewBox="0 0 640 170" role="img" aria-label="6 N first design, 31 N at iteration 12, 70 N on the latest design, target 40 N">
+      <g font-family="JetBrains Mono, monospace" font-size="12" fill="#6b6b6b">
+        <text x="0" y="31">First design</text><text x="0" y="81">Iteration 12</text><text x="0" y="131">Latest design</text>
+      </g>
+      <rect x="160" y="16" width="36" height="22" rx="3" fill="#cfccc5"/>
+      <rect x="160" y="66" width="186" height="22" rx="3" fill="#cfccc5"/>
+      <rect x="160" y="116" width="420" height="22" rx="3" fill="#e8501c"/>
+      <g font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#141414">
+        <text x="204" y="32">6 N</text><text x="354" y="82">31 N</text><text x="588" y="132">70 N</text>
+      </g>
+      <line x1="400" y1="6" x2="400" y2="150" stroke="#141414" stroke-dasharray="3 4"/>
+      <text x="400" y="166" font-family="JetBrains Mono, monospace" font-size="11" fill="#141414" text-anchor="middle">target 40 N</text>
+    </svg>
+  </figure>
+
+  <div class="prose"><h2>What the flow is doing</h2><p>These are streamlines colored by velocity. Green and yellow are faster, blue is slower.</p></div>
+  <figure>
+    <div class="frame white"><img src="img/cfd-side.jpg" alt="Side view streamlines through the diffuser" style="width:100%"></div>
+    <figcaption>Side view: the flow speeds up through the throat under the undertray, then slows and recirculates behind the diffuser exit.</figcaption>
+  </figure>
+  <div class="cfd-row">
+    <figure style="margin:0">
+      <div class="frame white tall"><img src="img/cfd-top.jpg" alt="Top view streamlines"></div>
+      <figcaption>Top view: the flow speeds up through the contraction, then spreads out behind the exit.</figcaption>
+    </figure>
+    <figure style="margin:0">
+      <div class="frame white"><img src="img/cfd-angle.jpg" alt="Angled view showing flow rolling over the side edges" style="width:100%"></div>
+      <figcaption>Angled view: air rolls over the side edges instead of staying in the tunnel. That's the side leakage I'm working to seal.</figcaption>
+    </figure>
+  </div>
+
+  <div class="prose"><h2>Case study: fixing the inlet stall</h2></div>
+  <div class="steps">
+    <div><span class="label">01 · Observation</span><p>The CFD showed the flow staying attached at the inlet, but the boundary layer was slowing way down and stalling at the entrance.</p></div>
+    <div><span class="label">02 · Hypothesis</span><p>The inlet angle was too big compared to the tunnel, so the expansion was more than the small tunnel could take in.</p></div>
+    <div><span class="label">03 · Change</span><p>I made the expansion smaller and kept everything else the same, so the comparison was fair.</p></div>
+    <div><span class="label">04 · Result</span><p>The boundary layer stalled much less, and the next iterations built on that geometry.</p></div>
+  </div>
+
+  <div class="prose">
+    <h2>Other design moves</h2>
+    <ul>
+      <li><b>Strakes.</b> Five strakes at the inlet and four in the diffuser, two of them curved, guide the flow through the expansion.</li>
+      <li><b>Vortex generators.</b> L-shaped vortex generators at the strake ends target the side-edge vortex, since there's no room for more cross-section.</li>
+      <li><b>Throat area and angle of attack.</b> I tuned these alongside the expansion angle, one variable at a time.</li>
+    </ul>
+  </div>
+
+  <figure>
+    <div class="frame"><img src="img/diffuser-rear.jpg" alt="Rear underside view of the diffuser" style="width:100%"></div>
+    <figcaption>Rear underside view: 5 inlet strakes, 4 diffuser strakes (2 curved), and L-shaped vortex generators at the strake ends.</figcaption>
+  </figure>
+
+  <div class="prose">
+    <h2>What's next</h2>
+    <p class="note">Air still leaks out the sides of the diffuser instead of flowing through it, and some exit flow leaves out the bottom. Sealing those edges is the next step.</p>
+    <h2>Validating the CFD</h2>
+    <p>Simulation isn't the final answer. The plan has two stages:</p>
+    <ul>
+      <li><b>Olin wind tunnel.</b> We'll 3D-print the parts and use yarn tufts and smoke to check that the real flow matches the CFD.</li>
+      <li><b>MIT wind tunnel.</b> Then we'll build a 3/4-scale model of the car and test it in MIT's tunnel.</li>
+    </ul>
+  </div>
+
+  <nav class="next"><a href="#"><span class="label">Back to</span><h3>← All projects</h3></a><a href="#lexus" style="text-align:right"><span class="label">Next project</span><h3>Lexus IS350 rebuild →</h3></a></nav>
+</div></main>
+
+<!-- LEXUS -->
+<main class="view" id="v-lexus"><div class="wrap">
+  <a class="back" href="#">← All projects</a>
+  <div class="p-head">
+    <div class="label" style="margin-bottom:14px">Personal project · 2006 Lexus IS350</div>
+    <h1>Engine, drivetrain &amp; suspension rebuild</h1>
+    <p>I traced a coolant leak to a failed head gasket and replaced the engine with my dad. We later diagnosed a shifting failure and replaced the transmission. I also replaced the rear differential and put the car on coilovers myself.</p>
+  </div>
+  <div class="kv">
+    <div><div class="v">Head gasket</div><div class="k">Root cause of the coolant leak</div></div>
+    <div><div class="v">~10 days</div><div class="k">Hands-on, over ~6 months</div></div>
+    <div><div class="v">Coilovers</div><div class="k">Installed solo, ride height set</div></div>
+    <div><div class="v">Stuck in 3rd</div><div class="k">Traced to the solenoid box</div></div>
+  </div>
+  <div class="prose" style="margin-bottom:40px">
+    <h2 style="margin-top:0">Engine</h2>
+    <p>The swap included reconnecting the wiring harness, replacing the radiator and engine mounts, and bleeding the cooling system.</p>
+    <h2>Transmission: stuck in third</h2>
+    <p>On the highway one day, the car wouldn't shift out of third. I revved it almost to redline and it still stayed in third. My dad guessed it was the solenoid box, and the code on the dash confirmed it.</p>
+    <p>First we tried a junkyard solenoid box. The car still wouldn't shift, so that one was probably bad too. A new solenoid box cost $300–400, and a good used transmission was about $700. The old transmission had 220K miles on it, so we replaced the whole transmission.</p>
+    <h2>Suspension</h2>
+    <p>The worn shocks made the ride rough, so I replaced them with coilovers and set the ride height myself. When the car moved strangely after the repair, I traced it to a badly worn control-arm bushing.</p>
+  </div>
+  <div class="p-hero" style="margin-top:0"><img src="img/lexus.jpg" alt="2006 Lexus IS350 after the rebuild" style="max-height:620px;width:100%;object-fit:cover"></div>
+  <div class="three">
+    <figure style="margin:0"><div class="frame"><img src="img/valvebody.jpg" alt="Transmission solenoid box exposed during diagnosis"></div><figcaption>Showing the solenoid box while we diagnosed the problem</figcaption></figure>
+    <figure style="margin:0"><div class="frame"><img src="img/shop.jpg" alt="Brandon and his dad replacing the transmission"></div><figcaption>Replacing the transmission with my dad</figcaption></figure>
+    <figure style="margin:0"><div class="frame"><video src="img/coilover.mp4" poster="img/coilover-poster.jpg" autoplay muted loop playsinline></video></div><figcaption>Replacing the rear differential</figcaption></figure>
+  </div>
+  <nav class="next"><a href="#diffuser"><span class="label">Previous</span><h3>← Rear diffuser</h3></a><a href="#" style="text-align:right"><span class="label">Back to</span><h3>All projects →</h3></a></nav>
+</div></main>
+
+<footer><div class="wrap">© 2026 Brandon Loaiza Rodriguez · Needham, MA · Loaiza.r007@gmail.com</div></footer>
+
+<script>
+  const views=['diffuser','lexus'];
+  function route(){
+    const h=location.hash.replace('#','');
+    const id=views.includes(h)?h:'home';
+    document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+id));
+    if(h==='contact'){const el=document.getElementById('contact-block'); if(el) el.scrollIntoView({behavior:'smooth'}); return;}
+    window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange',route);
+  route();
+</script>
+</body>
+</html>

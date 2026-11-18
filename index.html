@@ -168,7 +168,7 @@
     <a class="tile" href="#diffuser">
       <div class="cover"><img src="img/cover-car.jpg" alt="Formula SAE car render with rear diffuser"><span class="go">→</span></div>
       <div class="meta"><h3>FSAE rear diffuser &amp; undertray</h3><span class="label">CAD · CFD</span></div>
-      <p class="sub">Took downforce from 6 N to 70 N over 24+ CFD iterations. I'm the sole designer.</p>
+      <p class="sub">Took downforce from 6 N to 92 N over 26 CFD iterations. I'm the sole designer.</p>
     </a>
     <a class="tile" href="#lexus">
       <div class="cover"><img src="img/lexus.jpg" alt="Lexus IS on coilovers"><span class="go">→</span></div>
@@ -199,7 +199,7 @@
         <h2>Let's talk.</h2>
       </div>
       <div style="display:flex;flex-direction:column;gap:14px;align-items:flex-start">
-        <a class="mail" href="mailto:Loaiza.r007@gmail.com">Loaiza.r007@gmail.com</a>
+        <a class="mail" href="mailto:bloaizarodriguez@olin.edu">bloaizarodriguez@olin.edu</a>
         <div style="display:flex;gap:10px"><a class="btn" href="https://www.linkedin.com/in/brandonloaiza" target="_blank" rel="noopener">LinkedIn ↗</a><a class="btn" href="img/resume.pdf" target="_blank" rel="noopener">Resume ↗</a></div>
       </div>
     </div>
@@ -217,9 +217,9 @@
   <div class="p-hero"><img src="img/cover-car.jpg" alt="Formula SAE car render with rear diffuser"></div>
 
   <div class="kv">
-    <div><div class="v">70 N</div><div class="k">Downforce at 12 m/s</div></div>
-    <div><div class="v">14 N</div><div class="k">Drag (L/D = 5.0)</div></div>
-    <div><div class="v">24+</div><div class="k">CFD iterations</div></div>
+    <div><div class="v">92 N</div><div class="k">Downforce at 12 m/s</div></div>
+    <div><div class="v">26</div><div class="k">CFD iterations</div></div>
+    <div><div class="v">FoS &gt; 3.0</div><div class="k">10 steel mounting tabs, 200 N load</div></div>
     <div><div class="v">New</div><div class="k">Sub-team; I'm writing its aero docs</div></div>
   </div>
 
@@ -237,34 +237,34 @@
       <div><dt>Geometry</dt><dd>Diffuser and undertray on their own, without the car body</dd></div>
       <div><dt>Solver</dt><dd>Steady-state incompressible, k-ω turbulence model</dd></div>
       <div><dt>Mesh</dt><dd>About 7.1 million cells</dd></div>
-      <div><dt>Convergence</dt><dd>2,000 iterations; forces flat from about iteration 700; velocity residuals ≈ 5×10⁻⁵</dd></div>
+      <div><dt>Convergence</dt><dd>1,000 iterations on the latest run (CFD 26); downforce flat from about iteration 300</dd></div>
     </dl>
   </div>
 
   <figure>
-    <div class="frame white"><img src="img/force-plot.jpg" alt="SimScale force history for CFD 24" style="width:100%"></div>
-    <figcaption>Force history for the latest run: total downforce (red) settles by about iteration 700 and holds at 70.1 N through 2,000. Total drag (orange) holds near 14 N.</figcaption>
+    <div class="frame white"><img src="img/force-plot-cfd26.jpg" alt="SimScale force history for CFD 26, settling at 92.3 N of downforce" style="width:100%"></div>
+    <figcaption>Force history for the latest run, CFD 26: total downforce (red) levels off by about iteration 300 and finishes at 92.3 N at iteration 1,000.</figcaption>
   </figure>
 
   <div class="prose">
     <h2>Progress</h2>
-    <p>I used pressure distributions and velocity fields to decide each change. My first design made 6 N. After 12 iterations it made 31 N. The current design makes 70 N of downforce for 14 N of drag, well past the 40 N target.</p>
+    <p>I used pressure distributions and velocity fields to decide each change. My first design made 6 N. After 12 iterations it made 31 N. After 26 iterations the current design makes 92 N of downforce, more than double the 40 N target.</p>
   </div>
 
   <figure class="chart">
     <div class="label" style="margin-bottom:16px">Downforce at 12 m/s (CFD)</div>
-    <svg viewBox="0 0 640 170" role="img" aria-label="6 N first design, 31 N at iteration 12, 70 N on the latest design, target 40 N">
+    <svg viewBox="0 0 660 170" role="img" aria-label="6 N first design, 31 N at iteration 12, 92 N at iteration 26, target 40 N">
       <g font-family="JetBrains Mono, monospace" font-size="12" fill="#6b6b6b">
-        <text x="0" y="31">First design</text><text x="0" y="81">Iteration 12</text><text x="0" y="131">Latest design</text>
+        <text x="0" y="31">First design</text><text x="0" y="81">Iteration 12</text><text x="0" y="131">Iteration 26</text>
       </g>
-      <rect x="160" y="16" width="36" height="22" rx="3" fill="#cfccc5"/>
-      <rect x="160" y="66" width="186" height="22" rx="3" fill="#cfccc5"/>
-      <rect x="160" y="116" width="420" height="22" rx="3" fill="#e8501c"/>
+      <rect x="160" y="16" width="29" height="22" rx="3" fill="#cfccc5"/>
+      <rect x="160" y="66" width="148" height="22" rx="3" fill="#cfccc5"/>
+      <rect x="160" y="116" width="440" height="22" rx="3" fill="#e8501c"/>
       <g font-family="Inter, sans-serif" font-size="13" font-weight="500" fill="#141414">
-        <text x="204" y="32">6 N</text><text x="354" y="82">31 N</text><text x="588" y="132">70 N</text>
+        <text x="197" y="32">6 N</text><text x="316" y="82">31 N</text><text x="608" y="132">92 N</text>
       </g>
-      <line x1="400" y1="6" x2="400" y2="150" stroke="#141414" stroke-dasharray="3 4"/>
-      <text x="400" y="166" font-family="JetBrains Mono, monospace" font-size="11" fill="#141414" text-anchor="middle">target 40 N</text>
+      <line x1="351" y1="6" x2="351" y2="150" stroke="#141414" stroke-dasharray="3 4"/>
+      <text x="351" y="166" font-family="JetBrains Mono, monospace" font-size="11" fill="#141414" text-anchor="middle">target 40 N</text>
     </svg>
   </figure>
 
@@ -307,14 +307,20 @@
   </figure>
 
   <div class="prose">
-    <h2>What's next</h2>
-    <p class="note">Air still leaks out the sides of the diffuser instead of flowing through it, and some exit flow leaves out the bottom. Sealing those edges is the next step.</p>
+    <h2>Mounting the diffuser</h2>
+    <p>The diffuser attaches to the car with 10 mounting tabs in 4130 steel. I sized them with bearing-stress hand calculations at a 200 N design load, and every tab clears the 3.0 factor-of-safety target before fabrication.</p>
+  </div>
+
+  <figure>
+    <div class="frame"><img src="img/mounting-tabs.jpg" alt="SolidWorks side view of the undertray and diffuser mounted under the chassis" style="width:100%"></div>
+    <figcaption>Side view in SolidWorks: the undertray and diffuser under the chassis, with the mounting tabs along the floor.</figcaption>
+  </figure>
+
+  <div class="prose">
     <h2>Validating the CFD</h2>
-    <p>Simulation isn't the final answer. The plan has two stages:</p>
-    <ul>
-      <li><b>Olin wind tunnel.</b> We'll 3D-print the parts and use yarn tufts and smoke to check that the real flow matches the CFD.</li>
-      <li><b>MIT wind tunnel.</b> Then we'll build a 3/4-scale model of the car and test it in MIT's tunnel.</li>
-    </ul>
+    <p>Simulation isn't the final answer, so I tested the undertray and diffuser in Olin's wind tunnel to check for flow spillage and separation along the undertray.</p>
+    <h2>What's next</h2>
+    <p class="note">Air still leaks out the sides of the diffuser instead of flowing through it, and some exit flow leaves out the bottom. Sealing those edges is the next step, followed by testing a 3/4-scale model of the car in MIT's wind tunnel.</p>
   </div>
 
   <nav class="next"><a href="#"><span class="label">Back to</span><h3>← All projects</h3></a><a href="#lexus" style="text-align:right"><span class="label">Next project</span><h3>Lexus IS350 rebuild →</h3></a></nav>
@@ -332,27 +338,27 @@
     <div><div class="v">Head gasket</div><div class="k">Root cause of the coolant leak</div></div>
     <div><div class="v">~10 days</div><div class="k">Hands-on, over ~6 months</div></div>
     <div><div class="v">Coilovers</div><div class="k">Installed solo, ride height set</div></div>
-    <div><div class="v">Stuck in 3rd</div><div class="k">Traced to the solenoid box</div></div>
+    <div><div class="v">Stuck in 3rd</div><div class="k">Traced to the solenoid pack</div></div>
   </div>
   <div class="prose" style="margin-bottom:40px">
     <h2 style="margin-top:0">Engine</h2>
     <p>The swap included reconnecting the wiring harness, replacing the radiator and engine mounts, and bleeding the cooling system.</p>
     <h2>Transmission: stuck in third</h2>
-    <p>On the highway one day, the car wouldn't shift out of third. I revved it almost to redline and it still stayed in third. My dad guessed it was the solenoid box, and the code on the dash confirmed it.</p>
-    <p>First we tried a junkyard solenoid box. The car still wouldn't shift, so that one was probably bad too. A new solenoid box cost $300–400, and a good used transmission was about $700. The old transmission had 220K miles on it, so we replaced the whole transmission.</p>
+    <p>On the highway one day, the car wouldn't shift out of third. I revved it almost to redline and it still stayed in third. My dad guessed it was the solenoid pack, and the code on the dash confirmed it.</p>
+    <p>First we tried a junkyard solenoid pack. The car still wouldn't shift, so that one was probably bad too. A new solenoid pack cost $300–400, and a good used transmission was about $700. The old transmission had 220K miles on it, so we replaced the whole transmission.</p>
     <h2>Suspension</h2>
     <p>The worn shocks made the ride rough, so I replaced them with coilovers and set the ride height myself. When the car moved strangely after the repair, I traced it to a badly worn control-arm bushing.</p>
   </div>
   <div class="p-hero" style="margin-top:0"><img src="img/lexus.jpg" alt="2006 Lexus IS350 after the rebuild" style="max-height:620px;width:100%;object-fit:cover"></div>
   <div class="three">
-    <figure style="margin:0"><div class="frame"><img src="img/valvebody.jpg" alt="Transmission solenoid box exposed during diagnosis"></div><figcaption>Showing the solenoid box while we diagnosed the problem</figcaption></figure>
+    <figure style="margin:0"><div class="frame"><img src="img/valvebody.jpg" alt="Transmission solenoid pack exposed during diagnosis"></div><figcaption>Showing the solenoid pack while we diagnosed the problem</figcaption></figure>
     <figure style="margin:0"><div class="frame"><img src="img/shop.jpg" alt="Brandon and his dad replacing the transmission"></div><figcaption>Replacing the transmission with my dad</figcaption></figure>
     <figure style="margin:0"><div class="frame"><video src="img/coilover.mp4" poster="img/coilover-poster.jpg" autoplay muted loop playsinline></video></div><figcaption>Replacing the rear differential</figcaption></figure>
   </div>
   <nav class="next"><a href="#diffuser"><span class="label">Previous</span><h3>← Rear diffuser</h3></a><a href="#" style="text-align:right"><span class="label">Back to</span><h3>All projects →</h3></a></nav>
 </div></main>
 
-<footer><div class="wrap">© 2026 Brandon Loaiza Rodriguez · Needham, MA · Loaiza.r007@gmail.com</div></footer>
+<footer><div class="wrap">© 2026 Brandon Loaiza Rodriguez · Needham, MA · bloaizarodriguez@olin.edu</div></footer>
 
 <script>
   const views=['diffuser','lexus'];
